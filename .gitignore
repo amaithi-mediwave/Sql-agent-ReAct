@@ -1,0 +1,11 @@
+__pycache__
+nba_roster.db
+models.txt
+maia-staging-db-feb-26_dump.sql
+maia-staging-db-19-2-24_dump.sql
+docker-compose.yaml
+Chinook_Sqlite.sql
+packages/sql-llama2/sql_llama2.ipynb
+packages/sql-llama2/sql_llama2/__pycache__
+app/__pycache__
+.venv
