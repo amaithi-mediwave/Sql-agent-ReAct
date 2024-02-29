@@ -26,6 +26,9 @@ from langchain_core.prompts import (
     PromptTemplate,
 )
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
+
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain.chat_models import ChatOllama
 from langchain_community.llms import Ollama
@@ -37,6 +40,7 @@ from langchain.agents import (
     LLMSingleActionAgent,)
 from langchain.schema import AgentAction, AgentFinish
 from typing import Union
+from operator import itemgetter 
 import re
 
 
@@ -217,7 +221,7 @@ agent = AgentExecutor.from_agent_and_tools(
         agent=agent,
         tools=tools,
         # callback_manager=callback_manager,
-        verbose=True,
+        # verbose=True,
         handle_parsing_errors=True,
         # max_iterations=max_iterations,
         # max_execution_time=max_execution_time,
@@ -230,4 +234,4 @@ class InputType(BaseModel):
     input: str
 
 
-chain = agent.with_types(input_type=InputType)
+chain = agent.with_types(input_type=InputType) | itemgetter('output')
